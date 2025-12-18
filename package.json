@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://THU5HAR.github.io/portfolio",
+  "homepage": "https://THU5HAR.github.io/Portfolio",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
