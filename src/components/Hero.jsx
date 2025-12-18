@@ -123,6 +123,11 @@ const Hero = () => {
         
         <div className="hero-image">
           <div className="image-wrapper">
+            <img 
+              src={`${import.meta.env.BASE_URL}images/hero-image.png`}
+              alt="Thushar Sathish Bhandary" 
+              className="hero-portrait"
+            />
             <div className="gradient-orb"></div>
           </div>
         </div>
