@@ -44,9 +44,10 @@ const Hero = () => {
       .add({
         targets: socialRef.current?.children,
         opacity: [0, 1],
-        scale: [0, 1],
+        scale: [0.8, 1],
         delay: anime.stagger(100),
-        duration: 500
+        duration: 500,
+        easing: 'easeOutExpo'
       }, '-=400')
 
     // Floating animation for background elements
@@ -126,7 +127,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
     </section>
   )
 }
