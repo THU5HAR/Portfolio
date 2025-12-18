@@ -167,14 +167,13 @@
 }
 
 .hero-social {
-  position: absolute;
-  left: 20px;
-  bottom: 40px;
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  flex-direction: row;
+  gap: 1.5rem;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 2rem;
   z-index: 10;
-  align-items: flex-start;
 }
 
 .social-link {
@@ -237,14 +236,8 @@
   }
 
   .hero-social {
-    position: relative;
-    left: auto;
-    bottom: auto;
-    flex-direction: row;
     justify-content: center;
-    align-items: center;
-    margin-top: 3rem;
-    gap: 2rem;
+    margin-top: 2rem;
   }
 }
 
