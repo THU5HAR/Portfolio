@@ -47,19 +47,21 @@ const About = () => {
       <div className="about-content" ref={contentRef}>
         <div className="about-text">
           <p>
-            Currently interning as a <strong>Data Science Intern</strong> at Prodigy InfoTech, 
-            contributing to statistical data analysis and web design with a focus on impactful 
-            data-driven solutions.
+            Currently working as a <strong>Web Developer Intern</strong> at VisionAstraa EV Academy,
+            building responsive web interfaces and front-end features. Undergoing
+            <strong> Java Full Stack Development Training</strong> at TAP Academy India.
+            Previously interned as a <strong>Data Science Intern</strong> at Prodigy InfoTech, contributing
+            to statistical data analysis and web design with a focus on impactful data-driven solutions.
           </p>
           <p>
-            Pursuing a <strong>Bachelor of Engineering in Computer Science</strong> at Yenepoya 
-            Institute of Technology, bringing strong analytical skills and a foundation in 
-            statistical methodologies to projects.
+            Pursuing a <strong>Bachelor of Engineering in Computer Science</strong> at Yenepoya
+            Institute of Technology, bringing strong analytical skills and a disciplined
+            approach to debugging and reliability.
           </p>
           <p>
-            Completed multiple data analytics job simulations through Forage, enhancing 
-            capabilities in visualization and business insights. Working collaboratively to 
-            support actionable insights and innovative outcomes in a dynamic team environment.
+            Completed multiple job simulations and certifications, enhancing
+            capabilities in web development and software engineering. Always exploring
+            new technologies to build innovative and scalable applications.
           </p>
           <div className="about-highlights">
             <div className="highlight-item">

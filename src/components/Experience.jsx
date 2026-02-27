@@ -8,15 +8,40 @@ const Experience = () => {
 
   const experiences = [
     {
+      company: 'VisionAstraa EV Academy',
+      position: 'Web Developer Intern',
+      duration: 'February 2026 - Present',
+      location: 'India',
+      description: [
+        'Developing responsive web pages using HTML, CSS, and JavaScript',
+        'Implementing clean, user-friendly UI layouts with performance focus',
+        'Converting design requirements into structured frontend components',
+        'Collaborating with team members to ensure cross-browser compatibility and responsive design',
+        'Optimizing web applications for maximum speed and scalability'
+      ]
+    },
+    {
+      company: 'TAP Academy India',
+      position: 'Java Full Stack Development Training',
+      duration: 'February 2026 - Present',
+      location: 'Remote, India',
+      description: [
+        'Undergoing comprehensive training in Java Full Stack development with focus on core Java, advanced Java, and Spring Boot',
+        'Learning frontend technologies including HTML, CSS, JavaScript, and React for full stack development',
+        'Working on hands-on projects to build end-to-end web applications using Java backend and modern frontend frameworks',
+        'Gaining expertise in database management with MySQL and implementing RESTful APIs'
+      ]
+    },
+    {
       company: 'Prodigy InfoTech',
       position: 'Data Science Intern',
       duration: 'July 2025 - August 2025',
-      location: 'India',
+      location: 'Remote, India',
       description: [
-        'Worked on data-driven applications involving cleaning, analysis, and validation',
-        'Developed and tested Python scripts to ensure correctness and consistency',
-        'Debugged data inconsistencies to improve result reliability',
-        'Recognized for work ethic and attention to detail (LOR received)'
+        'Completed data-driven projects applying advanced analytics and problem-solving techniques',
+        'Worked on statistical data analysis and web design with focus on impactful solutions',
+        'Developed data visualization dashboards using Python libraries including Pandas, NumPy, and Matplotlib',
+        'Collaborated with cross-functional teams following agile methodologies for project delivery'
       ]
     }
   ]

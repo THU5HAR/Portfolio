@@ -8,34 +8,28 @@ const Projects = () => {
 
   const projects = [
     {
-      title: 'US Traffic Accident Pattern Analysis',
-      description: 'Analyzed 7.7M+ accident records to identify patterns and risk factors. Performed validation, analysis, and visualization.',
-      tools: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Plotly'],
-      category: 'Data Analytics'
+      title: 'Blockchain-Based Medicine Counterfeit Prevention System',
+      description: 'Built web-based system to verify medicine authenticity using blockchain-inspired logic. Implemented unique identification and verification workflows with frontend interfaces for monitoring.',
+      tools: ['React', 'Node.js', 'JavaScript'],
+      category: 'Web Development'
     },
     {
       title: 'Hospital Management Display System',
-      description: 'Built a real-time dashboard for patient and admin interfaces. Implemented frontend logic and tested UI workflows.',
+      description: 'Developed real-time hospital display dashboard for patient and admin views. Implemented dynamic UI components and alerts using JavaScript, integrating Firebase for real-time synchronization.',
       tools: ['HTML', 'CSS', 'JavaScript', 'Firebase'],
       category: 'Web Development'
     },
     {
-      title: 'Customer Purchase Prediction System',
-      description: 'Developed a predictive model for term deposit subscriptions. Focused on preprocessing, testing, and evaluation.',
-      tools: ['Python', 'Pandas', 'Scikit-learn'],
-      category: 'Machine Learning'
+      title: 'Pain Monitoring Application',
+      description: 'Built web application to record and track patient pain levels. Designed intuitive UI for pain-scale input and visualization.',
+      tools: ['JavaScript', 'Web Technologies'],
+      category: 'Web Development'
     },
     {
       title: 'Curve Guard for Hill Stations (IoT)',
-      description: 'Designed an IoT safety system with real-time tracking. Integrated hardware and software with systematic testing.',
+      description: 'Developed IoT-based safety system with Firebase tracking for real-time monitoring.',
       tools: ['Arduino', 'C', 'Firebase'],
       category: 'IoT'
-    },
-    {
-      title: 'Sentiment Analysis of Social Media Data',
-      description: 'Processed Twitter datasets for sentiment trends and patterns. Analyzed large-scale social media data.',
-      tools: ['Python', 'Pandas', 'Seaborn', 'Matplotlib'],
-      category: 'Data Analytics'
     }
   ]
 

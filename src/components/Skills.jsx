@@ -9,7 +9,7 @@ const Skills = () => {
   const skillCategories = [
     {
       title: 'Programming Languages',
-      skills: ['Python', 'C', 'C++', 'JavaScript'],
+      skills: ['Python', 'Java', 'JavaScript'],
       icon: '💻'
     },
     {
@@ -19,18 +19,18 @@ const Skills = () => {
     },
     {
       title: 'Databases',
-      skills: ['Oracle SQL', 'MongoDB'],
+      skills: ['MySQL', 'MongoDB'],
       icon: '🗄️'
     },
     {
-      title: 'Tools & Platforms',
-      skills: ['Git', 'Excel', 'Tableau', 'Figma', 'Firebase', 'Arduino'],
-      icon: '🛠️'
+      title: 'Testing & Analysis',
+      skills: ['Debugging', 'Test Case Design', 'Data Validation'],
+      icon: '📊'
     },
     {
-      title: 'Testing & Analysis',
-      skills: ['Debugging', 'Test Case Design', 'Data Validation', 'Statistical Analysis'],
-      icon: '📊'
+      title: 'Tools & Platforms',
+      skills: ['Git', 'Excel', 'Tableau', 'Figma', 'Firebase', 'Arduino', 'LaTeX'],
+      icon: '🛠️'
     }
   ]
 

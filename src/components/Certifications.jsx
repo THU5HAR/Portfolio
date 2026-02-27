@@ -13,34 +13,29 @@ const Certifications = () => {
       type: 'Course'
     },
     {
-      title: 'Data Visualisation: Empowering Business with Effective Insights',
-      issuer: 'Tata - Job Simulation',
+      title: 'Data Visualisation: Empowering Business with Effective Insights Job Simulation',
+      issuer: 'Tata - Forage',
       type: 'Job Simulation'
     },
     {
       title: 'Data Analytics Job Simulation',
-      issuer: 'Deloitte Australia',
+      issuer: 'Deloitte Australia - Forage',
       type: 'Job Simulation'
     },
     {
       title: 'GenAI Powered Data Analytics Job Simulation',
-      issuer: 'Tata',
+      issuer: 'Tata - Forage',
       type: 'Job Simulation'
     },
     {
       title: 'Software Development Job Simulation',
-      issuer: 'Datacom',
+      issuer: 'Datacom - Forage',
       type: 'Job Simulation'
     },
     {
       title: 'Google Cybersecurity Certificate',
       issuer: 'Coursera',
       type: 'Certificate'
-    },
-    {
-      title: 'Web Development Bootcamp',
-      issuer: 'LetsUpgrade',
-      type: 'Bootcamp'
     }
   ]
 
