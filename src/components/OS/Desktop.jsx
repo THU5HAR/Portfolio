@@ -114,8 +114,7 @@ const Desktop = () => {
                     <div
                         key={app.id}
                         className={`desktop-icon ${openWindows.includes(app.id) ? 'open' : ''} ${activeWindow === app.id ? 'active' : ''}`}
-                        onDoubleClick={() => openApp(app.id)}
-                        onClick={() => setActiveWindow(app.id)}
+                        onClick={() => openApp(app.id)}
                         title={app.title}
                     >
                         <div className="icon-emoji">{app.icon}</div>

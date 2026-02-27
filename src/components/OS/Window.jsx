@@ -8,10 +8,11 @@ const Window = ({ title, isActive, onClose, onFocus, children }) => {
     return (
         <Draggable
             handle=".window-header"
+            cancel=".window-controls"
             bounds="parent"
             disabled={isMaximized}
             onMouseDown={onFocus}
-            defaultPosition={{ x: 100, y: 100 }}
+            defaultPosition={{ x: window.innerWidth > 600 ? 100 : 10, y: window.innerWidth > 600 ? 100 : 20 }}
         >
             <div
                 className={`os-window ${isActive ? 'active' : ''} ${isMaximized ? 'maximized' : ''}`}
@@ -20,9 +21,21 @@ const Window = ({ title, isActive, onClose, onFocus, children }) => {
                 <div className="window-header">
                     <div className="window-title">{title}</div>
                     <div className="window-controls">
-                        <button className="control-btn minimize" onClick={(e) => { e.stopPropagation(); /* just keep active state handler running */ }}></button>
-                        <button className="control-btn maximize" onClick={(e) => { e.stopPropagation(); setIsMaximized(!isMaximized) }}></button>
-                        <button className="control-btn close" onClick={(e) => { e.stopPropagation(); onClose() }}></button>
+                        <button
+                            className="control-btn minimize"
+                            onClick={(e) => { e.stopPropagation(); }}
+                            onTouchStart={(e) => { e.stopPropagation(); }}
+                        ></button>
+                        <button
+                            className="control-btn maximize"
+                            onClick={(e) => { e.stopPropagation(); setIsMaximized(!isMaximized) }}
+                            onTouchStart={(e) => { e.stopPropagation(); setIsMaximized(!isMaximized) }}
+                        ></button>
+                        <button
+                            className="control-btn close"
+                            onClick={(e) => { e.stopPropagation(); onClose() }}
+                            onTouchStart={(e) => { e.stopPropagation(); onClose() }}
+                        ></button>
                     </div>
                 </div>
                 <div className="window-content">

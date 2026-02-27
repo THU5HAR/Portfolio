@@ -26,8 +26,7 @@
     max-height: none !important;
     border-radius: 0;
     top: 0 !important;
-    left: -60px !important;
-    /* adjust for dock offset if we want or just fill left space */
+    left: 0 !important;
     transform: none !important;
 }
 
