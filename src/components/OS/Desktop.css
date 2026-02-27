@@ -201,3 +201,51 @@
 .os-dock.size-large~.os-windows {
     left: 110px;
 }
+
+/* Menu Overlay Styles */
+.os-dropdown-menu {
+    position: absolute;
+    top: 28px;
+    left: 0;
+    width: 250px;
+    background: rgba(44, 44, 44, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 0 0 8px 0;
+    box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.6);
+    padding: 10px 0;
+    z-index: 200;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.menu-section-title {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 5px 15px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.menu-app-item {
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.menu-app-item:hover {
+    background: rgba(233, 84, 32, 0.8);
+}
+
+.menu-icon {
+    font-size: 18px;
+}
+
+.menu-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 8px 0;
+}

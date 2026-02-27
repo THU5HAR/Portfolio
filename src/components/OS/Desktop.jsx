@@ -11,13 +11,20 @@ import Certifications from '../Certifications';
 import Education from '../Education';
 import Contact from '../Contact';
 
+import ClockApp from './apps/ClockApp';
+import CalculatorApp from './apps/CalculatorApp';
+import TerminalGames from './apps/TerminalGames';
+
 const apps = [
-    { id: 'about', title: 'About Me', icon: '👤', component: <><Hero /><About /></> },
-    { id: 'experience', title: 'Experience', icon: '💼', component: <Experience /> },
-    { id: 'projects', title: 'Projects', icon: '🚀', component: <Projects /> },
-    { id: 'skills', title: 'Skills', icon: '🛠️', component: <Skills /> },
-    { id: 'education', title: 'Education', icon: '🎓', component: <><Education /><Certifications /></> },
-    { id: 'contact', title: 'Contact', icon: '📬', component: <Contact /> },
+    { id: 'about', title: 'About Me', icon: '👤', component: <><Hero /><About /></>, type: 'regular' },
+    { id: 'experience', title: 'Experience', icon: '💼', component: <Experience />, type: 'regular' },
+    { id: 'projects', title: 'Projects', icon: '🚀', component: <Projects />, type: 'regular' },
+    { id: 'skills', title: 'Skills', icon: '🛠️', component: <Skills />, type: 'regular' },
+    { id: 'education', title: 'Education', icon: '🎓', component: <><Education /><Certifications /></>, type: 'regular' },
+    { id: 'contact', title: 'Contact', icon: '📬', component: <Contact />, type: 'regular' },
+    { id: 'clock', title: 'Clock', icon: '⏰', component: <ClockApp />, type: 'system' },
+    { id: 'calc', title: 'Calculator', icon: '🧮', component: <CalculatorApp />, type: 'system' },
+    { id: 'games', title: 'Terminal Games', icon: '👾', component: <TerminalGames />, type: 'system' }
 ];
 
 const Desktop = () => {
@@ -25,6 +32,7 @@ const Desktop = () => {
     const [activeWindow, setActiveWindow] = useState(null);
     const [time, setTime] = useState(new Date());
     const [iconSize, setIconSize] = useState('medium');
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         const timer = setInterval(() => setTime(new Date()), 1000);
@@ -50,11 +58,33 @@ const Desktop = () => {
     };
 
     return (
-        <div className="os-desktop">
+        <div className="os-desktop" onClick={() => isMenuOpen && setIsMenuOpen(false)}>
             {/* Top Bar */}
             <div className="os-topbar">
-                <div className="topbar-left">
-                    <span className="topbar-item">Activities</span>
+                <div className="topbar-left" style={{ position: 'relative' }}>
+                    <span
+                        className="topbar-item"
+                        onClick={(e) => { e.stopPropagation(); setIsMenuOpen(!isMenuOpen) }}
+                    >
+                        Menu
+                    </span>
+                    {isMenuOpen && (
+                        <div className="os-dropdown-menu" onClick={e => e.stopPropagation()}>
+                            <div className="menu-section-title">SYSTEM APPS</div>
+                            {apps.filter(app => app.type === 'system').map(app => (
+                                <div key={app.id} className="menu-app-item" onClick={() => { openApp(app.id); setIsMenuOpen(false); }}>
+                                    <span className="menu-icon">{app.icon}</span> {app.title}
+                                </div>
+                            ))}
+                            <div className="menu-divider"></div>
+                            <div className="menu-section-title">PORTFOLIO APPS</div>
+                            {apps.filter(app => app.type === 'regular').map(app => (
+                                <div key={app.id} className="menu-app-item" onClick={() => { openApp(app.id); setIsMenuOpen(false); }}>
+                                    <span className="menu-icon">{app.icon}</span> {app.title}
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
                 <div className="topbar-center">
                     <span className="topbar-item">{time.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })} {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
@@ -70,7 +100,7 @@ const Desktop = () => {
 
             {/* Dock */}
             <div className={`os-dock size-${iconSize}`}>
-                {apps.map((app) => (
+                {apps.filter(app => app.type === 'regular' || openWindows.includes(app.id)).map((app) => (
                     <div
                         key={app.id}
                         className={`dock-icon ${openWindows.includes(app.id) ? 'open' : ''} ${activeWindow === app.id ? 'active' : ''}`}
