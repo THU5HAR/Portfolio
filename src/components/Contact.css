@@ -37,7 +37,7 @@
 .contact-item:hover {
   border-color: var(--primary-color);
   transform: translateX(10px);
-  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 10px 30px rgba(193, 18, 31, 0.2);
 }
 
 .contact-icon {
@@ -46,9 +46,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(99, 102, 241, 0.1);
+  background: rgba(193, 18, 31, 0.1);
   border-radius: 12px;
-  border: 1px solid rgba(99, 102, 241, 0.3);
+  border: 1px solid rgba(193, 18, 31, 0.3);
   flex-shrink: 0;
   color: var(--primary-color);
 }
@@ -113,7 +113,7 @@
   background: var(--gradient-1);
   border-color: transparent;
   transform: translateY(-3px);
-  box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 5px 20px rgba(193, 18, 31, 0.4);
 }
 
 .footer {

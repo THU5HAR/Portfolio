@@ -56,7 +56,7 @@
 .highlight-item:hover {
   border-color: var(--primary-color);
   transform: translateX(5px);
-  box-shadow: 0 5px 20px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 5px 20px rgba(193, 18, 31, 0.2);
 }
 
 .highlight-icon {
@@ -94,7 +94,7 @@
 .stat-card:hover {
   border-color: var(--primary-color);
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 10px 30px rgba(193, 18, 31, 0.3);
 }
 
 .stat-number {
