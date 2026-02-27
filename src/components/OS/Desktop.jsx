@@ -24,6 +24,7 @@ const Desktop = () => {
     const [openWindows, setOpenWindows] = useState([]);
     const [activeWindow, setActiveWindow] = useState(null);
     const [time, setTime] = useState(new Date());
+    const [iconSize, setIconSize] = useState('medium');
 
     useEffect(() => {
         const timer = setInterval(() => setTime(new Date()), 1000);
@@ -59,13 +60,16 @@ const Desktop = () => {
                     <span className="topbar-item">{time.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })} {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                 </div>
                 <div className="topbar-right">
+                    <span className="topbar-item" title="Toggle Icon Size" onClick={() => setIconSize(s => s === 'small' ? 'medium' : s === 'medium' ? 'large' : 'small')}>
+                        Size: {iconSize === 'small' ? 'S' : iconSize === 'medium' ? 'M' : 'L'}
+                    </span>
                     <span className="topbar-item">🔋 100%</span>
                     <span className="topbar-item">▼</span>
                 </div>
             </div>
 
             {/* Dock */}
-            <div className="os-dock">
+            <div className={`os-dock size-${iconSize}`}>
                 {apps.map((app) => (
                     <div
                         key={app.id}
@@ -74,6 +78,7 @@ const Desktop = () => {
                         title={app.title}
                     >
                         <div className="icon-emoji">{app.icon}</div>
+                        <div className="icon-label">{app.title}</div>
                         {openWindows.includes(app.id) && <div className="dock-indicator" />}
                     </div>
                 ))}
