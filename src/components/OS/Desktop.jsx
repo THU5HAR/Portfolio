@@ -26,7 +26,10 @@ const apps = [
     { id: 'clock', title: 'Clock', icon: '⏰', component: <ClockApp />, type: 'system' },
     { id: 'notepad', title: 'Notepad', icon: '📝', component: <NotepadApp />, type: 'system' },
     { id: 'calc', title: 'Calculator', icon: '🧮', component: <CalculatorApp />, type: 'system' },
-    { id: 'games', title: 'Terminal Games', icon: '👾', component: <TerminalGames />, type: 'system' }
+    { id: 'games', title: 'Terminal Games', icon: '👾', component: <TerminalGames />, type: 'system' },
+    { id: 'linkedin', title: 'LinkedIn', icon: '💼', type: 'link', url: 'https://www.linkedin.com/in/thushar-sathish-bhandary-238a08255' },
+    { id: 'instagram', title: 'Instagram', icon: '📸', type: 'link', url: 'https://instagram.com/' },
+    { id: 'github', title: 'GitHub', icon: '🐙', type: 'link', url: 'https://github.com/THU5HAR' }
 ];
 
 const Desktop = () => {
@@ -42,6 +45,11 @@ const Desktop = () => {
     }, []);
 
     const openApp = (appId) => {
+        const app = apps.find(a => a.id === appId);
+        if (app?.type === 'link') {
+            window.open(app.url, '_blank');
+            return;
+        }
         if (!openWindows.includes(appId)) {
             setOpenWindows([...openWindows, appId]);
         }
