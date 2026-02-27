@@ -13,7 +13,6 @@ import Contact from '../Contact';
 
 import ClockApp from './apps/ClockApp';
 import NotepadApp from './apps/NotepadApp';
-import BrowserApp from './apps/BrowserApp';
 import CalculatorApp from './apps/CalculatorApp';
 import TerminalGames from './apps/TerminalGames';
 
@@ -26,7 +25,6 @@ const apps = [
     { id: 'contact', title: 'Contact', icon: '📬', component: <Contact />, type: 'regular' },
     { id: 'clock', title: 'Clock', icon: '⏰', component: <ClockApp />, type: 'system' },
     { id: 'notepad', title: 'Notepad', icon: '📝', component: <NotepadApp />, type: 'system' },
-    { id: 'browser', title: 'Browser', icon: '🌐', component: <BrowserApp />, type: 'system' },
     { id: 'calc', title: 'Calculator', icon: '🧮', component: <CalculatorApp />, type: 'system' },
     { id: 'games', title: 'Terminal Games', icon: '👾', component: <TerminalGames />, type: 'system' }
 ];
