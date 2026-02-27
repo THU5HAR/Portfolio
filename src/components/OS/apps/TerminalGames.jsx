@@ -98,6 +98,7 @@ export default function TerminalGames() {
                 setGameData({ ...gameData, attempts: newAttempts });
                 print("Too high! Try again.");
             }
+            return;
         }
 
         if (mode === 'rps') {
@@ -112,6 +113,7 @@ export default function TerminalGames() {
                 print("Computer wins!");
             }
             print("Type 'quit' to return to menu, or play again.");
+            return;
         }
 
         if (mode === 'math') {
@@ -126,11 +128,13 @@ export default function TerminalGames() {
             const b = Math.floor(Math.random() * 20);
             setGameData({ answer: a + b });
             print(`Next question: What is ${a} + ${b}? (or 'quit')`);
+            return;
         }
 
         if (mode === '8ball') {
             const answers = ["Yes, definitely.", "It is decidedly so.", "Without a doubt.", "Reply hazy, try again.", "Ask again later.", "Better not tell you now.", "Don't count on it.", "My reply is no.", "My sources say no.", "Very doubtful."];
             print(`Magic 8-Ball says: ${answers[Math.floor(Math.random() * answers.length)]}`);
+            return;
         }
 
         if (mode === 'ttt') {
@@ -176,6 +180,7 @@ export default function TerminalGames() {
                 setGameData({ board: newBoard, isX: true });
                 print("Your turn (enter 0-8):");
             }
+            return;
         }
     };
 
