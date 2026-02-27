@@ -3,7 +3,10 @@ import { useState, useRef, useEffect } from 'react';
 export default function TerminalGames() {
     const [history, setHistory] = useState([
         "Welcome to Terminal Arcade!",
-        "Available Games: [1] Guess the Number [2] Rock Paper Scissors [3] Math Quiz [4] Magic 8-Ball [5] Tic-Tac-Toe",
+        "Available Games:",
+        " [1] Guess the Number  [2] Rock Paper Scissors  [3] Math Quiz  [4] Magic 8-Ball",
+        " [5] Tic-Tac-Toe       [6] Coin Toss            [7] Hangman    [8] Anagram",
+        " [9] Trivia            [10] Password Hacker",
         "Type the number of the game you want to play, or 'help' to see this list again."
     ]);
     const [input, setInput] = useState('');
@@ -76,10 +79,62 @@ export default function TerminalGames() {
                     break;
                 case 'help':
                 case 'ls':
-                    print("Available Games: [1] Guess the Number [2] Rock Paper Scissors [3] Math Quiz [4] Magic 8-Ball [5] Tic-Tac-Toe");
+                    print("Available Games:");
+                    print(" [1] Guess the Number  [2] Rock Paper Scissors  [3] Math Quiz  [4] Magic 8-Ball");
+                    print(" [5] Tic-Tac-Toe       [6] Coin Toss            [7] Hangman    [8] Anagram");
+                    print(" [9] Trivia            [10] Password Hacker");
+                    break;
+                case '6':
+                case 'cointoss':
+                    setMode('cointoss');
+                    print("--- COIN TOSS ---");
+                    print("Choose 'heads' or 'tails'!");
+                    break;
+                case '7':
+                case 'hangman':
+                    setMode('hangman');
+                    const wordsForHangman = ['react', 'javascript', 'frontend', 'terminal', 'portfolio', 'developer'];
+                    const chosenWord = wordsForHangman[Math.floor(Math.random() * wordsForHangman.length)];
+                    setGameData({ word: chosenWord, guessed: [], lives: 6 });
+                    print("--- HANGMAN ---");
+                    print(`Guess the word: ${'_'.repeat(chosenWord.length)}`);
+                    print(`Lives: 6 (type a single letter)`);
+                    break;
+                case '8':
+                case 'anagram':
+                    setMode('anagram');
+                    const anagramWords = ['interface', 'component', 'backend', 'fullstack', 'browser'];
+                    const aWord = anagramWords[Math.floor(Math.random() * anagramWords.length)];
+                    const scrambled = aWord.split('').sort(() => 0.5 - Math.random()).join('');
+                    setGameData({ word: aWord, attempts: 3 });
+                    print("--- ANAGRAM ---");
+                    print(`Unscramble this word: ${scrambled}`);
+                    print(`You have 3 attempts.`);
+                    break;
+                case '9':
+                case 'trivia':
+                    setMode('trivia');
+                    const questions = [
+                        { q: "What year was JavaScript launched?", a: "1995" },
+                        { q: "What does HTML stand for?", a: "hypertext markup language" },
+                        { q: "What does CSS stand for?", a: "cascading style sheets" }
+                    ];
+                    const qItem = questions[Math.floor(Math.random() * questions.length)];
+                    setGameData({ qItem });
+                    print("--- TRIVIA ---");
+                    print(qItem.q);
+                    break;
+                case '10':
+                case 'hacker':
+                    setMode('hacker');
+                    const passwords = ['admin123', 'root', 'qwerty', 'password', 'hackme'];
+                    const pass = passwords[Math.floor(Math.random() * passwords.length)];
+                    setGameData({ pass, attempts: 4 });
+                    print("--- PASSWORD HACKER ---");
+                    print(`SYSTEM LOCKED. You have 4 attempts to guess the password.`);
                     break;
                 default:
-                    print("Command not recognized. Type 1-5 to choose a game, or 'help'.");
+                    print("Command not recognized. Type 1-10 to choose a game, or 'help'.");
             }
             return;
         }
@@ -179,6 +234,88 @@ export default function TerminalGames() {
             } else {
                 setGameData({ board: newBoard, isX: true });
                 print("Your turn (enter 0-8):");
+            }
+            return;
+        }
+
+        if (mode === 'cointoss') {
+            if (!['heads', 'tails'].includes(cmd)) return print("Invalid choice. Type 'heads' or 'tails'.");
+            const outcome = Math.random() < 0.5 ? 'heads' : 'tails';
+            print(`Coin flipped... it's ${outcome}!`);
+            if (cmd === outcome) print("You win!");
+            else print("You lose!");
+            print("Type 'quit' to return to menu, or play again.");
+            return;
+        }
+
+        if (mode === 'hangman') {
+            if (cmd.length !== 1 || !/[a-z]/.test(cmd)) return print("Please enter a single letter.");
+            if (gameData.guessed.includes(cmd)) return print("You already guessed that letter.");
+
+            const newGuessed = [...gameData.guessed, cmd];
+            let newLives = gameData.lives;
+            if (!gameData.word.includes(cmd)) {
+                newLives--;
+                print(`Incorrect! Lives remaining: ${newLives}`);
+            } else {
+                print(`Correct!`);
+            }
+
+            let displayWord = gameData.word.split('').map(l => newGuessed.includes(l) ? l : '_').join('');
+            print(`Word: ${displayWord}`);
+
+            if (displayWord === gameData.word) {
+                print("Congratulations, you guessed the word! Returning to menu...");
+                setMode('menu');
+            } else if (newLives <= 0) {
+                print(`Game Over! The word was '${gameData.word}'. Returning to menu...`);
+                setMode('menu');
+            } else {
+                setGameData({ ...gameData, guessed: newGuessed, lives: newLives });
+            }
+            return;
+        }
+
+        if (mode === 'anagram') {
+            if (cmd === gameData.word) {
+                print("Correct! You unscrambled the word! Returning to menu...");
+                setMode('menu');
+            } else {
+                const attempts = gameData.attempts - 1;
+                if (attempts <= 0) {
+                    print(`Game Over! The word was '${gameData.word}'. Returning to menu...`);
+                    setMode('menu');
+                } else {
+                    setGameData({ ...gameData, attempts });
+                    print(`Incorrect! You have ${attempts} attempts left.`);
+                }
+            }
+            return;
+        }
+
+        if (mode === 'trivia') {
+            if (cmd === gameData.qItem.a) {
+                print("Correct! Returning to menu...");
+            } else {
+                print(`Wrong! The answer was '${gameData.qItem.a}'. Returning to menu...`);
+            }
+            setMode('menu');
+            return;
+        }
+
+        if (mode === 'hacker') {
+            if (cmd === gameData.pass) {
+                print("ACCESS GRANTED. Returning to menu...");
+                setMode('menu');
+            } else {
+                const attempts = gameData.attempts - 1;
+                if (attempts <= 0) {
+                    print(`ACCESS DENIED. Out of attempts. Returning to menu...`);
+                    setMode('menu');
+                } else {
+                    setGameData({ ...gameData, attempts });
+                    print(`Incorrect password. ${attempts} attempts remaining.`);
+                }
             }
             return;
         }
