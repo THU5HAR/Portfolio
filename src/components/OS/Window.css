@@ -57,44 +57,39 @@
 
 .window-controls {
     display: flex;
-    gap: 8px;
-    width: 60px;
-    /* balance out the title flex */
+    gap: 0;
+    height: 100%;
 }
 
 /* fake spacer to balance title centering */
 .window-header::before {
     content: '';
     display: block;
-    width: 60px;
+    width: 108px;
 }
 
 .control-btn {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
+    width: 36px;
+    height: 100%;
+    border-radius: 0;
     border: none;
     cursor: pointer;
+    background: transparent;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     outline: none;
-    position: relative;
     transition: all 0.2s ease;
 }
 
-.control-btn.close {
-    background: #e95420;
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .control-btn.close:hover {
-    background: #fc7546;
-}
-
-.control-btn.maximize {
-    background: #772953;
-    /* using ubuntu accent for max */
-}
-
-.control-btn.minimize {
-    background: #333;
+    background: #e81123;
+    color: #fff;
 }
 
 .window-content {

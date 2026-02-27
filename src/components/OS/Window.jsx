@@ -25,17 +25,37 @@ const Window = ({ title, isActive, onClose, onFocus, children }) => {
                             className="control-btn minimize"
                             onClick={(e) => { e.stopPropagation(); }}
                             onTouchStart={(e) => { e.stopPropagation(); }}
-                        ></button>
+                            title="Minimize"
+                        >
+                            <svg viewBox="0 0 10 10" fill="currentColor" width="12" height="12"><rect width="10" height="1" y="4.5" /></svg>
+                        </button>
                         <button
                             className="control-btn maximize"
                             onClick={(e) => { e.stopPropagation(); setIsMaximized(!isMaximized) }}
                             onTouchStart={(e) => { e.stopPropagation(); setIsMaximized(!isMaximized) }}
-                        ></button>
+                            title="Maximize"
+                        >
+                            {isMaximized ? (
+                                <svg viewBox="0 0 10 10" stroke="currentColor" fill="none" width="12" height="12">
+                                    <path d="M2.5,2.5 h4 v4 h-4 z" />
+                                    <path d="M4.5,2.5 v-1.5 h4 v4 h-1.5" />
+                                </svg>
+                            ) : (
+                                <svg viewBox="0 0 10 10" stroke="currentColor" fill="none" width="12" height="12">
+                                    <path d="M1.5,1.5 h7 v7 h-7 z" />
+                                </svg>
+                            )}
+                        </button>
                         <button
                             className="control-btn close"
                             onClick={(e) => { e.stopPropagation(); onClose() }}
                             onTouchStart={(e) => { e.stopPropagation(); onClose() }}
-                        ></button>
+                            title="Close"
+                        >
+                            <svg viewBox="0 0 10 10" stroke="currentColor" fill="none" width="12" height="12">
+                                <path d="M1.5,1.5 L8.5,8.5 M8.5,1.5 L1.5,8.5" strokeWidth="1.2" />
+                            </svg>
+                        </button>
                     </div>
                 </div>
                 <div className="window-content">
