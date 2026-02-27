@@ -1,8 +1,8 @@
 import os
 
 replacements = {
-    'rgba(99, 102, 241': 'rgba(193, 18, 31',
-    'rgba(15, 23, 42': 'rgba(0, 48, 73'
+    'rgba(193, 18, 31': 'rgba(233, 84, 32',
+    'rgba(0, 48, 73': 'rgba(44, 0, 30'
 }
 
 target_dir = '/Volumes/Extreme SSD/Projects/portfolio/src'

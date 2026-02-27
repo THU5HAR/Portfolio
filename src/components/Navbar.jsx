@@ -18,7 +18,7 @@ const Navbar = ({ activeSection }) => {
     if (isScrolled) {
       anime({
         targets: '.navbar',
-        backgroundColor: 'rgba(0, 48, 73, 0.95)',
+        backgroundColor: 'rgba(44, 0, 30, 0.95)',
         backdropFilter: 'blur(10px)',
         duration: 300,
         easing: 'easeOutQuad'
