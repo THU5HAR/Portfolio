@@ -28,7 +28,7 @@ const apps = [
     { id: 'calc', title: 'Calculator', icon: '🧮', component: <CalculatorApp />, type: 'system' },
     { id: 'games', title: 'Terminal Games', icon: '👾', component: <TerminalGames />, type: 'system' },
     { id: 'linkedin', title: 'LinkedIn', icon: '💼', type: 'link', url: 'https://www.linkedin.com/in/thushar-sathish-bhandary-238a08255' },
-    { id: 'instagram', title: 'Instagram', icon: '📸', type: 'link', url: 'https://instagram.com/' },
+    { id: 'instagram', title: 'Instagram', icon: '📸', type: 'link', url: 'https://www.instagram.com/_thushhh____/' },
     { id: 'github', title: 'GitHub', icon: '🐙', type: 'link', url: 'https://github.com/THU5HAR' }
 ];
 
