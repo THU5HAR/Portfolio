@@ -16,7 +16,7 @@
     transform: translate(-50%, -50%);
     width: 800px;
     height: 800px;
-    background: url('/tsb-logo.png') no-repeat center center/contain;
+    background: url('../../assets/tsb-logo.png') no-repeat center center/contain;
     opacity: 0.15;
     z-index: 1;
     /* just above background, behind icons */
