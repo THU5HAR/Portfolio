@@ -20,12 +20,29 @@
     animation: fadeInOut 4s ease-in-out forwards;
 }
 
-.boot-logo {
-    width: 150px;
-    height: auto;
+.boot-logo-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 30px;
-    filter: drop-shadow(0 0 10px rgba(0, 195, 255, 0.4));
+}
+
+.boot-logo-glow {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(0, 210, 255, 0.4) 0%, rgba(0, 210, 255, 0) 70%);
+    animation: pulseGlow 2s infinite alternate;
+    z-index: 0;
+}
+
+.boot-logo {
+    width: 250px;
+    height: auto;
+    filter: drop-shadow(0 0 15px rgba(0, 195, 255, 0.6));
     animation: pulse 2s infinite alternate;
+    z-index: 1;
 }
 
 .boot-spinner {
@@ -63,6 +80,18 @@
 
     100% {
         transform: scale(1.05);
+        opacity: 1;
+    }
+}
+
+@keyframes pulseGlow {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1.2);
         opacity: 1;
     }
 }
