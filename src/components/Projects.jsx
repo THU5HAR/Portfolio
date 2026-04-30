@@ -17,15 +17,27 @@ const Projects = () => {
     },
     {
       title: 'Blockchain-Based Medicine Counterfeit Prevention System',
-      description: 'Built web-based system to verify medicine authenticity using blockchain-inspired logic. Implemented unique identification and verification workflows. Developed frontend interfaces for verification and monitoring.',
+      description: 'Built web-based system to verify medicine authenticity using blockchain-inspired logic. Implemented unique identification and verification workflows with frontend interfaces for monitoring.',
       tools: ['React', 'Node.js', 'JavaScript'],
       category: 'Web Development'
     },
     {
+      title: 'Hospital Management Display System',
+      description: 'Developed real-time hospital display dashboard for patient and admin views. Implemented dynamic UI components and alerts using JavaScript, integrating Firebase for real-time synchronization.',
+      tools: ['HTML', 'CSS', 'JavaScript', 'Firebase'],
+      category: 'Web Development'
+    },
+    {
       title: 'Pain Monitoring Application',
-      description: 'Built web application to record and track patient pain levels with interactive pain-scale interface. Designed intuitive UI for pain-scale input and visualization with real-time data updates. Implemented data tracking and historical pain level analysis.',
+      description: 'Built web application to record and track patient pain levels with interactive pain-scale interface. Designed intuitive UI for pain-scale input and visualization with real-time data updates.',
       tools: ['JavaScript', 'HTML', 'CSS'],
       category: 'Web Development'
+    },
+    {
+      title: 'Curve Guard for Hill Stations (IoT)',
+      description: 'Developed IoT-based safety system with Firebase tracking for real-time monitoring of hill station curves.',
+      tools: ['Arduino', 'C', 'Firebase'],
+      category: 'IoT'
     }
   ]
 
@@ -36,16 +48,15 @@ const Projects = () => {
         {
           opacity: 1, y: 0, rotateX: 0,
           duration: 0.7, stagger: 0.12, ease: 'power3.out',
-          scrollTrigger: { trigger: '.projects-grid', start: 'top 82%' }
+          scrollTrigger: { trigger: '.projects-grid', start: 'top 82%', end: 'top 20%', toggleActions: 'play none none reverse' }
         }
       )
 
-      // Tool tags pop in
       gsap.fromTo('.tool-tag',
         { opacity: 0, scale: 0.7 },
         {
           opacity: 1, scale: 1, duration: 0.3, stagger: 0.03, ease: 'back.out(1.5)',
-          scrollTrigger: { trigger: '.projects-grid', start: 'top 75%' }
+          scrollTrigger: { trigger: '.projects-grid', start: 'top 75%', end: 'top 15%', toggleActions: 'play none none reverse' }
         }
       )
     }, sectionRef)

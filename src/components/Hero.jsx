@@ -49,19 +49,7 @@ const Hero = () => {
         '-=1'
       )
 
-      // Continuous float for 3D shapes
-      gsap.utils.toArray('.shape-3d').forEach((shape, i) => {
-        gsap.to(shape, {
-          y: `random(-20, 20)`,
-          x: `random(-10, 10)`,
-          rotation: `random(-15, 15)`,
-          duration: `random(3, 5)`,
-          repeat: -1,
-          yoyo: true,
-          ease: 'sine.inOut',
-          delay: i * 0.3,
-        })
-      })
+      // Shapes now interact with cursor via App.jsx repulsion system
 
       // Parallax on hero image
       gsap.to('.hero-portrait', {

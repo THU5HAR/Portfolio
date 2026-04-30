@@ -53,7 +53,8 @@ section + section::before {
 
 .deco-shape {
   position: absolute;
-  opacity: 0.25;
+  opacity: 0.35;
+  will-change: transform;
 }
 
 /* Small filled circle */

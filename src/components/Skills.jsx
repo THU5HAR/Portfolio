@@ -41,7 +41,7 @@ const Skills = () => {
     },
     {
       title: 'Data & Design Tools',
-      skills: ['Excel', 'Tableau', 'Figma', 'Arduino'],
+      skills: ['Excel', 'Tableau', 'Figma', 'Firebase', 'Arduino', 'LaTeX'],
       icon: '🎨'
     }
   ]
@@ -52,7 +52,7 @@ const Skills = () => {
         { opacity: 0, y: 40, scale: 0.95 },
         {
           opacity: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.1, ease: 'power3.out',
-          scrollTrigger: { trigger: '.skills-container', start: 'top 80%' }
+          scrollTrigger: { trigger: '.skills-container', start: 'top 80%', end: 'top 20%', toggleActions: 'play none none reverse' }
         }
       )
 
@@ -60,7 +60,7 @@ const Skills = () => {
         { opacity: 0, scale: 0.8 },
         {
           opacity: 1, scale: 1, duration: 0.4, stagger: 0.03, ease: 'back.out(1.6)',
-          scrollTrigger: { trigger: '.skills-container', start: 'top 75%' }
+          scrollTrigger: { trigger: '.skills-container', start: 'top 75%', end: 'top 15%', toggleActions: 'play none none reverse' }
         }
       )
     }, sectionRef)

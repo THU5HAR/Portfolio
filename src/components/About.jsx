@@ -13,21 +13,21 @@ const About = () => {
       gsap.fromTo('.about-text p', 
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out',
-          scrollTrigger: { trigger: '.about-text', start: 'top 80%' }
+          scrollTrigger: { trigger: '.about-text', start: 'top 80%', end: 'top 20%', toggleActions: 'play none none reverse' }
         }
       )
 
       gsap.fromTo('.highlight-item',
         { opacity: 0, x: -30 },
         { opacity: 1, x: 0, duration: 0.6, stagger: 0.12, ease: 'power3.out',
-          scrollTrigger: { trigger: '.about-highlights', start: 'top 85%' }
+          scrollTrigger: { trigger: '.about-highlights', start: 'top 85%', end: 'top 25%', toggleActions: 'play none none reverse' }
         }
       )
 
       gsap.fromTo('.stat-card',
         { opacity: 0, scale: 0.85 },
         { opacity: 1, scale: 1, duration: 0.5, stagger: 0.1, ease: 'back.out(1.4)',
-          scrollTrigger: { trigger: '.about-stats', start: 'top 85%' }
+          scrollTrigger: { trigger: '.about-stats', start: 'top 85%', end: 'top 25%', toggleActions: 'play none none reverse' }
         }
       )
     }, sectionRef)
@@ -46,9 +46,10 @@ const About = () => {
             Proficient in building RESTful APIs, JWT authentication, and deploying scalable web applications.
           </p>
           <p>
-            Currently undergoing intensive <strong>Java Full Stack Training</strong> at TAP Academy,
-            covering Core Java, OOP, Spring Boot, microservice patterns, and Docker containerization.
-            Building end-to-end applications with modern frontend and backend frameworks.
+            Currently working as a <strong>Web Developer Intern</strong> at VisionAstraa EV Academy
+            and undergoing intensive <strong>Java Full Stack Training</strong> at TAP Academy.
+            Previously interned as a <strong>Data Science Intern</strong> at Prodigy InfoTech, contributing
+            to statistical data analysis and data-driven solutions.
           </p>
           <p>
             Pursuing a <strong>Bachelor of Engineering in Computer Science</strong> at Yenepoya
@@ -89,11 +90,11 @@ const About = () => {
             <div className="stat-label">Expected Graduation</div>
           </div>
           <div className="stat-card">
-            <div className="stat-number">4+</div>
+            <div className="stat-number">5+</div>
             <div className="stat-label">Projects</div>
           </div>
           <div className="stat-card">
-            <div className="stat-number">2+</div>
+            <div className="stat-number">6+</div>
             <div className="stat-label">Certifications</div>
           </div>
         </div>

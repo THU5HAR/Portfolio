@@ -16,6 +16,20 @@ const Education = () => {
       duration: '2022 – 2026 (Expected)',
       grade: 'CGPA: 8.1 / 10',
       status: 'Ongoing'
+    },
+    {
+      degree: 'Pre-University Course (PUC) — Science',
+      institution: 'P.R.N. Amratha Bharathi PU College, Hebri',
+      duration: 'Completed',
+      grade: 'Percentage: 82%',
+      status: 'Completed'
+    },
+    {
+      degree: 'SSLC (10th Grade)',
+      institution: 'Christ King English Medium High School, Karkala',
+      duration: 'Completed',
+      grade: 'Percentage: 86%',
+      status: 'Completed'
     }
   ]
 
@@ -25,7 +39,7 @@ const Education = () => {
         { opacity: 0, x: 50 },
         {
           opacity: 1, x: 0, duration: 0.7, stagger: 0.15, ease: 'power3.out',
-          scrollTrigger: { trigger: '.education-timeline', start: 'top 82%' }
+          scrollTrigger: { trigger: '.education-timeline', start: 'top 82%', end: 'top 20%', toggleActions: 'play none none reverse' }
         }
       )
     }, sectionRef)
