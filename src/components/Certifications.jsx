@@ -9,46 +9,27 @@ const Certifications = () => {
   const sectionRef = useRef(null)
 
   const certifications = [
-    {
-      title: 'Introduction to Career Skills in Data Analytics',
-      issuer: 'Microsoft',
-      type: 'Course'
-    },
-    {
-      title: 'Data Visualisation: Empowering Business with Effective Insights Job Simulation',
-      issuer: 'Tata - Forage',
-      type: 'Job Simulation'
-    },
-    {
-      title: 'Data Analytics Job Simulation',
-      issuer: 'Deloitte Australia - Forage',
-      type: 'Job Simulation'
-    },
-    {
-      title: 'GenAI Powered Data Analytics Job Simulation',
-      issuer: 'Tata - Forage',
-      type: 'Job Simulation'
-    },
-    {
-      title: 'Software Development Job Simulation',
-      issuer: 'Datacom - Forage',
-      type: 'Job Simulation'
-    },
-    {
-      title: 'Google Cybersecurity Certificate',
-      issuer: 'Coursera',
-      type: 'Certificate'
-    }
+    { title: 'Introduction to Career Skills in Data Analytics', issuer: 'Microsoft', type: 'Course' },
+    { title: 'Data Visualisation: Empowering Business with Effective Insights Job Simulation', issuer: 'Tata - Forage', type: 'Job Simulation' },
+    { title: 'Data Analytics Job Simulation', issuer: 'Deloitte Australia - Forage', type: 'Job Simulation' },
+    { title: 'GenAI Powered Data Analytics Job Simulation', issuer: 'Tata - Forage', type: 'Job Simulation' },
+    { title: 'Software Development Job Simulation', issuer: 'Datacom - Forage', type: 'Job Simulation' },
+    { title: 'Google Cybersecurity Certificate', issuer: 'Coursera', type: 'Certificate' }
   ]
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.cert-card',
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out',
-          scrollTrigger: { trigger: '.certifications-grid', start: 'top 82%', end: 'top 20%', toggleActions: 'play none none reverse' }
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.certifications-grid',
+          start: 'top 82%',
+          end: 'top 20%',
+          toggleActions: 'play reverse play reverse',
         }
+      })
+      tl.fromTo('.cert-card',
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.5, stagger: 0.06, ease: 'power3.out' }
       )
     }, sectionRef)
 

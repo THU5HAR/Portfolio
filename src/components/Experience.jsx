@@ -55,25 +55,22 @@ const Experience = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.experience-card',
-        { opacity: 0, x: -60 },
-        { opacity: 1, x: 0, duration: 0.8, stagger: 0.2, ease: 'power3.out',
-          scrollTrigger: { trigger: '.exp-timeline', start: 'top 80%', end: 'top 20%', toggleActions: 'play none none reverse' }
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.exp-timeline',
+          start: 'top 82%',
+          end: 'top 15%',
+          toggleActions: 'play reverse play reverse',
         }
-      )
-
-      gsap.fromTo('.timeline-dot',
+      })
+      tl.fromTo('.timeline-dot',
         { scale: 0 },
-        { scale: 1, duration: 0.4, stagger: 0.2, ease: 'back.out(2)',
-          scrollTrigger: { trigger: '.exp-timeline', start: 'top 80%', end: 'top 20%', toggleActions: 'play none none reverse' }
-        }
+        { scale: 1, duration: 0.3, stagger: 0.15, ease: 'back.out(2)' }
       )
-
-      gsap.fromTo('.experience-description li',
-        { opacity: 0, x: -20 },
-        { opacity: 1, x: 0, duration: 0.4, stagger: 0.05, ease: 'power2.out',
-          scrollTrigger: { trigger: '.experience-description', start: 'top 85%', end: 'top 25%', toggleActions: 'play none none reverse' }
-        }
+      .fromTo('.experience-card',
+        { opacity: 0, x: -60 },
+        { opacity: 1, x: 0, duration: 0.7, stagger: 0.15, ease: 'power3.out' },
+        '-=0.4'
       )
     }, sectionRef)
 

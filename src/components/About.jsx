@@ -10,25 +10,46 @@ const About = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.about-text p', 
+      // Text paragraphs
+      const tlText = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.about-text',
+          start: 'top 82%',
+          end: 'top 20%',
+          toggleActions: 'play reverse play reverse',
+        }
+      })
+      tlText.fromTo('.about-text > p',
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out',
-          scrollTrigger: { trigger: '.about-text', start: 'top 80%', end: 'top 20%', toggleActions: 'play none none reverse' }
-        }
+        { opacity: 1, y: 0, duration: 0.7, stagger: 0.12, ease: 'power3.out' }
       )
 
-      gsap.fromTo('.highlight-item',
+      // Highlight cards
+      const tlHighlight = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.about-highlights',
+          start: 'top 85%',
+          end: 'top 25%',
+          toggleActions: 'play reverse play reverse',
+        }
+      })
+      tlHighlight.fromTo('.highlight-item',
         { opacity: 0, x: -30 },
-        { opacity: 1, x: 0, duration: 0.6, stagger: 0.12, ease: 'power3.out',
-          scrollTrigger: { trigger: '.about-highlights', start: 'top 85%', end: 'top 25%', toggleActions: 'play none none reverse' }
-        }
+        { opacity: 1, x: 0, duration: 0.5, stagger: 0.1, ease: 'power3.out' }
       )
 
-      gsap.fromTo('.stat-card',
-        { opacity: 0, scale: 0.85 },
-        { opacity: 1, scale: 1, duration: 0.5, stagger: 0.1, ease: 'back.out(1.4)',
-          scrollTrigger: { trigger: '.about-stats', start: 'top 85%', end: 'top 25%', toggleActions: 'play none none reverse' }
+      // Stat cards
+      const tlStats = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.about-stats',
+          start: 'top 85%',
+          end: 'top 25%',
+          toggleActions: 'play reverse play reverse',
         }
+      })
+      tlStats.fromTo('.stat-card',
+        { opacity: 0, scale: 0.85 },
+        { opacity: 1, scale: 1, duration: 0.4, stagger: 0.08, ease: 'back.out(1.4)' }
       )
     }, sectionRef)
 

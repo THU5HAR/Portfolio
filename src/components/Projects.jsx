@@ -43,21 +43,22 @@ const Projects = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.project-card',
-        { opacity: 0, y: 50, rotateX: 5 },
-        {
-          opacity: 1, y: 0, rotateX: 0,
-          duration: 0.7, stagger: 0.12, ease: 'power3.out',
-          scrollTrigger: { trigger: '.projects-grid', start: 'top 82%', end: 'top 20%', toggleActions: 'play none none reverse' }
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.projects-grid',
+          start: 'top 82%',
+          end: 'top 15%',
+          toggleActions: 'play reverse play reverse',
         }
+      })
+      tl.fromTo('.project-card',
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out' }
       )
-
-      gsap.fromTo('.tool-tag',
+      .fromTo('.tool-tag',
         { opacity: 0, scale: 0.7 },
-        {
-          opacity: 1, scale: 1, duration: 0.3, stagger: 0.03, ease: 'back.out(1.5)',
-          scrollTrigger: { trigger: '.projects-grid', start: 'top 75%', end: 'top 15%', toggleActions: 'play none none reverse' }
-        }
+        { opacity: 1, scale: 1, duration: 0.25, stagger: 0.02, ease: 'back.out(1.5)' },
+        '-=0.3'
       )
     }, sectionRef)
 

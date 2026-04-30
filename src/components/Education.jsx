@@ -35,12 +35,17 @@ const Education = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.education-card',
-        { opacity: 0, x: 50 },
-        {
-          opacity: 1, x: 0, duration: 0.7, stagger: 0.15, ease: 'power3.out',
-          scrollTrigger: { trigger: '.education-timeline', start: 'top 82%', end: 'top 20%', toggleActions: 'play none none reverse' }
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.education-timeline',
+          start: 'top 82%',
+          end: 'top 20%',
+          toggleActions: 'play reverse play reverse',
         }
+      })
+      tl.fromTo('.education-card',
+        { opacity: 0, x: 50 },
+        { opacity: 1, x: 0, duration: 0.6, stagger: 0.12, ease: 'power3.out' }
       )
     }, sectionRef)
 

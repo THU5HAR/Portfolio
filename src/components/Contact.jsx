@@ -10,25 +10,27 @@ const Contact = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.contact-intro',
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.contact-content',
+          start: 'top 85%',
+          end: 'top 25%',
+          toggleActions: 'play reverse play reverse',
+        }
+      })
+      tl.fromTo('.contact-intro',
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
-          scrollTrigger: { trigger: '.contact-content', start: 'top 85%', end: 'top 25%', toggleActions: 'play none none reverse' }
-        }
+        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }
       )
-
-      gsap.fromTo('.contact-item',
+      .fromTo('.contact-item',
         { opacity: 0, x: -30 },
-        { opacity: 1, x: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out',
-          scrollTrigger: { trigger: '.contact-items', start: 'top 85%', end: 'top 25%', toggleActions: 'play none none reverse' }
-        }
+        { opacity: 1, x: 0, duration: 0.5, stagger: 0.08, ease: 'power3.out' },
+        '-=0.3'
       )
-
-      gsap.fromTo('.social-button',
+      .fromTo('.social-button',
         { opacity: 0, scale: 0.85 },
-        { opacity: 1, scale: 1, duration: 0.5, stagger: 0.1, ease: 'back.out(1.4)',
-          scrollTrigger: { trigger: '.social-links', start: 'top 90%', end: 'top 30%', toggleActions: 'play none none reverse' }
-        }
+        { opacity: 1, scale: 1, duration: 0.4, stagger: 0.08, ease: 'back.out(1.4)' },
+        '-=0.2'
       )
     }, sectionRef)
 
