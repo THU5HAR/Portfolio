@@ -11,13 +11,18 @@ const Skills = () => {
   const skillCategories = [
     {
       title: 'Programming Languages',
-      skills: ['Python', 'Java', 'JavaScript'],
+      skills: ['Java', 'JavaScript', 'Python (Core)'],
       icon: '💻'
     },
     {
       title: 'Web Development',
-      skills: ['HTML', 'CSS', 'React', 'Node.js (Basics)'],
+      skills: ['HTML', 'CSS', 'React', 'Node.js (Core)'],
       icon: '🌐'
+    },
+    {
+      title: 'Backend Technologies',
+      skills: ['Spring Boot', 'JDBC', 'REST APIs', 'JSON', 'API Integration'],
+      icon: '⚙️'
     },
     {
       title: 'Databases',
@@ -25,23 +30,28 @@ const Skills = () => {
       icon: '🗄️'
     },
     {
+      title: 'DevOps & Tools',
+      skills: ['Git', 'Docker', 'Postman'],
+      icon: '🐳'
+    },
+    {
       title: 'Testing & Analysis',
       skills: ['Debugging', 'Test Case Design', 'Data Validation'],
       icon: '📊'
     },
     {
-      title: 'Tools & Platforms',
-      skills: ['Git', 'Excel', 'Tableau', 'Figma', 'Firebase', 'Arduino', 'LaTeX'],
-      icon: '🛠️'
+      title: 'Data & Design Tools',
+      skills: ['Excel', 'Tableau', 'Figma', 'Arduino'],
+      icon: '🎨'
     }
   ]
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo('.skill-category',
-        { opacity: 0, y: 40 },
+        { opacity: 0, y: 40, scale: 0.95 },
         {
-          opacity: 1, y: 0, duration: 0.7, stagger: 0.12, ease: 'power3.out',
+          opacity: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.1, ease: 'power3.out',
           scrollTrigger: { trigger: '.skills-container', start: 'top 80%' }
         }
       )
@@ -49,7 +59,7 @@ const Skills = () => {
       gsap.fromTo('.skill-item',
         { opacity: 0, scale: 0.8 },
         {
-          opacity: 1, scale: 1, duration: 0.4, stagger: 0.04, ease: 'back.out(1.6)',
+          opacity: 1, scale: 1, duration: 0.4, stagger: 0.03, ease: 'back.out(1.6)',
           scrollTrigger: { trigger: '.skills-container', start: 'top 75%' }
         }
       )

@@ -41,42 +41,40 @@ const About = () => {
       <div className="about-content">
         <div className="about-text">
           <p>
-            Currently working as a <strong>Web Developer Intern</strong> at VisionAstraa EV Academy,
-            building responsive web interfaces and front-end features. Undergoing
-            <strong> Java Full Stack Development Training</strong> at TAP Academy India.
-            Previously interned as a <strong>Data Science Intern</strong> at Prodigy InfoTech, contributing
-            to statistical data analysis and web design with a focus on impactful data-driven solutions.
+            Computer Science student specializing in <strong>Java Full Stack Development</strong> with
+            hands-on experience in <strong>Spring Boot</strong>, <strong>React</strong>, and <strong>MySQL</strong>.
+            Proficient in building RESTful APIs, JWT authentication, and deploying scalable web applications.
+          </p>
+          <p>
+            Currently undergoing intensive <strong>Java Full Stack Training</strong> at TAP Academy,
+            covering Core Java, OOP, Spring Boot, microservice patterns, and Docker containerization.
+            Building end-to-end applications with modern frontend and backend frameworks.
           </p>
           <p>
             Pursuing a <strong>Bachelor of Engineering in Computer Science</strong> at Yenepoya
-            Institute of Technology, bringing strong analytical skills and a disciplined
-            approach to debugging and reliability.
-          </p>
-          <p>
-            Completed multiple job simulations and certifications, enhancing
-            capabilities in web development and software engineering. Always exploring
-            new technologies to build innovative and scalable applications.
+            Institute of Technology (VTU). Passionate about clean code, scalable architecture,
+            and delivering production-grade software.
           </p>
           <div className="about-highlights">
             <div className="highlight-item">
-              <div className="highlight-icon">🎯</div>
+              <div className="highlight-icon">⚡</div>
               <div>
-                <h4>Analytical Mindset</h4>
-                <p>Strong foundation in statistical analysis and data validation</p>
+                <h4>Full Stack Development</h4>
+                <p>Spring Boot backend + React frontend with MySQL databases</p>
               </div>
             </div>
             <div className="highlight-item">
-              <div className="highlight-icon">💡</div>
+              <div className="highlight-icon">🔐</div>
               <div>
-                <h4>Problem Solver</h4>
-                <p>Proven ability to debug and build reliable applications</p>
+                <h4>API & Authentication</h4>
+                <p>RESTful APIs with JWT-based auth and role-based access control</p>
               </div>
             </div>
             <div className="highlight-item">
-              <div className="highlight-icon">🚀</div>
+              <div className="highlight-icon">🐳</div>
               <div>
-                <h4>Continuous Learner</h4>
-                <p>Always exploring new technologies and methodologies</p>
+                <h4>DevOps & Deployment</h4>
+                <p>Docker containerization and cloud deployment on Render</p>
               </div>
             </div>
           </div>
@@ -91,11 +89,11 @@ const About = () => {
             <div className="stat-label">Expected Graduation</div>
           </div>
           <div className="stat-card">
-            <div className="stat-number">5+</div>
+            <div className="stat-number">4+</div>
             <div className="stat-label">Projects</div>
           </div>
           <div className="stat-card">
-            <div className="stat-number">4+</div>
+            <div className="stat-number">2+</div>
             <div className="stat-label">Certifications</div>
           </div>
         </div>

@@ -50,6 +50,31 @@ function App() {
       );
     });
 
+    // Animate decorative shapes with parallax
+    gsap.utils.toArray('.deco-shape').forEach((shape) => {
+      gsap.to(shape, {
+        y: `random(-60, 60)`,
+        x: `random(-30, 30)`,
+        rotation: `random(-20, 20)`,
+        duration: `random(4, 7)`,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+      });
+
+      // Parallax on scroll
+      gsap.to(shape, {
+        y: `random(-120, -40)`,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: shape.closest('section') || shape.parentElement,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        }
+      });
+    });
+
     return () => ScrollTrigger.getAll().forEach(t => t.kill());
   }, []);
 
@@ -58,6 +83,16 @@ function App() {
       <Navbar activeSection={activeSection} />
       <main>
         <Hero />
+        {/* Decorative shapes between sections */}
+        <div className="deco-shapes-wrap" aria-hidden="true">
+          <div className="deco-shape deco-circle-1"></div>
+          <div className="deco-shape deco-square-1"></div>
+          <div className="deco-shape deco-dots-1"></div>
+          <div className="deco-shape deco-ring-1"></div>
+          <div className="deco-shape deco-triangle-1"></div>
+          <div className="deco-shape deco-circle-2"></div>
+          <div className="deco-shape deco-cross-1"></div>
+        </div>
         <About />
         <Skills />
         <Experience />

@@ -3,6 +3,7 @@
   min-height: 100vh;
   position: relative;
   background: var(--bg-main);
+  overflow-x: hidden;
 }
 
 /* Section spacing */
@@ -25,12 +26,6 @@ section {
   transform: translateY(40px);
 }
 
-/* Smooth reveal class applied by GSAP */
-.revealed {
-  opacity: 1 !important;
-  transform: none !important;
-}
-
 /* Horizontal rule between sections */
 section + section::before {
   content: '';
@@ -44,8 +39,128 @@ section + section::before {
   border-radius: 2px;
 }
 
+/* ============================= */
+/* Decorative floating shapes    */
+/* ============================= */
+
+.deco-shapes-wrap {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.deco-shape {
+  position: absolute;
+  opacity: 0.25;
+}
+
+/* Small filled circle */
+.deco-circle-1 {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--sand-400);
+  top: 25%;
+  right: 6%;
+}
+
+/* Rotated square */
+.deco-square-1 {
+  width: 24px;
+  height: 24px;
+  background: var(--accent-light);
+  border-radius: 4px;
+  transform: rotate(45deg);
+  top: 40%;
+  left: 4%;
+  opacity: 0.2;
+}
+
+/* Dot pattern */
+.deco-dots-1 {
+  width: 80px;
+  height: 80px;
+  background-image: radial-gradient(circle, var(--sand-500) 1.5px, transparent 1.5px);
+  background-size: 10px 10px;
+  top: 55%;
+  right: 3%;
+  opacity: 0.15;
+}
+
+/* Hollow ring */
+.deco-ring-1 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2.5px solid var(--sand-400);
+  top: 70%;
+  left: 7%;
+  opacity: 0.2;
+}
+
+/* Small triangle */
+.deco-triangle-1 {
+  width: 0;
+  height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-bottom: 28px solid var(--sand-400);
+  top: 15%;
+  left: 10%;
+  opacity: 0.18;
+}
+
+/* Another circle bottom area */
+.deco-circle-2 {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  bottom: 20%;
+  right: 10%;
+  opacity: 0.15;
+}
+
+/* Plus/cross shape */
+.deco-cross-1 {
+  top: 85%;
+  left: 5%;
+  width: 20px;
+  height: 20px;
+  opacity: 0.2;
+}
+
+.deco-cross-1::before,
+.deco-cross-1::after {
+  content: '';
+  position: absolute;
+  background: var(--sand-500);
+  border-radius: 2px;
+}
+
+.deco-cross-1::before {
+  width: 20px;
+  height: 3px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.deco-cross-1::after {
+  width: 3px;
+  height: 20px;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+
 @media (max-width: 768px) {
   section {
     padding: 80px 20px;
+  }
+  .deco-shapes-wrap {
+    display: none;
   }
 }

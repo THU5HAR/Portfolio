@@ -10,26 +10,12 @@ const Education = () => {
 
   const education = [
     {
-      degree: 'Bachelor of Engineering (B.E.) - Computer Science',
+      degree: 'Bachelor of Engineering (B.E.) — Computer Science',
       institution: 'Yenepoya Institute of Technology, Moodbidri',
       university: 'VTU, Belagavi',
-      duration: '2022 - 2026 (Expected)',
+      duration: '2022 – 2026 (Expected)',
       grade: 'CGPA: 8.1 / 10',
       status: 'Ongoing'
-    },
-    {
-      degree: 'Pre-University Course (PUC) - Science',
-      institution: 'P.R.N. Amratha Bharathi PU College, Hebri',
-      duration: 'Completed',
-      grade: 'Percentage: 82%',
-      status: 'Completed'
-    },
-    {
-      degree: 'SSLC (10th Grade)',
-      institution: 'Christ King English Medium High School, Karkala',
-      duration: 'Completed',
-      grade: 'Percentage: 86%',
-      status: 'Completed'
     }
   ]
 

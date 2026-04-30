@@ -17,14 +17,14 @@ const Hero = () => {
         { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }
       )
       .fromTo('.hero-name',
-        { opacity: 0, y: 60 },
-        { opacity: 1, y: 0, duration: 1, ease: 'power3.out' },
+        { opacity: 0, y: 60, clipPath: 'inset(100% 0 0 0)' },
+        { opacity: 1, y: 0, clipPath: 'inset(0% 0 0 0)', duration: 1.2, ease: 'power4.out' },
         '-=0.4'
       )
       .fromTo('.hero-role',
         { opacity: 0, y: 40 },
         { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-        '-=0.5'
+        '-=0.6'
       )
       .fromTo('.hero-desc',
         { opacity: 0, y: 30 },
@@ -37,10 +37,31 @@ const Hero = () => {
         '-=0.3'
       )
       .fromTo('.hero-image-wrap',
-        { opacity: 0, scale: 0.9 },
-        { opacity: 1, scale: 1, duration: 1, ease: 'power3.out' },
-        '-=0.8'
+        { opacity: 0, scale: 0.85, rotate: -3 },
+        { opacity: 1, scale: 1, rotate: 0, duration: 1.2, ease: 'power3.out' },
+        '-=1'
       )
+
+      // Floating 3D shapes entrance
+      tl.fromTo('.shape-3d',
+        { opacity: 0, scale: 0 },
+        { opacity: 1, scale: 1, duration: 0.8, stagger: 0.15, ease: 'back.out(1.7)' },
+        '-=1'
+      )
+
+      // Continuous float for 3D shapes
+      gsap.utils.toArray('.shape-3d').forEach((shape, i) => {
+        gsap.to(shape, {
+          y: `random(-20, 20)`,
+          x: `random(-10, 10)`,
+          rotation: `random(-15, 15)`,
+          duration: `random(3, 5)`,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          delay: i * 0.3,
+        })
+      })
 
       // Parallax on hero image
       gsap.to('.hero-portrait', {
@@ -54,7 +75,19 @@ const Hero = () => {
         }
       })
 
-      // Fade out hero on scroll
+      // Parallax shapes on scroll
+      gsap.to('.shape-3d', {
+        y: -80,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.8,
+        }
+      })
+
+      // Fade out hero content on scroll
       gsap.to('.hero-content', {
         opacity: 0,
         y: -60,
@@ -80,6 +113,13 @@ const Hero = () => {
 
   return (
     <section id="home" className="hero" ref={heroRef}>
+      {/* Floating 3D shapes */}
+      <div className="shape-3d shape-cube" aria-hidden="true"></div>
+      <div className="shape-3d shape-sphere" aria-hidden="true"></div>
+      <div className="shape-3d shape-ring" aria-hidden="true"></div>
+      <div className="shape-3d shape-pyramid" aria-hidden="true"></div>
+      <div className="shape-3d shape-dot-grid" aria-hidden="true"></div>
+
       <div className="hero-content">
         <div className="hero-text">
           <p className="hero-greeting">Hello, I'm</p>
@@ -87,10 +127,10 @@ const Hero = () => {
             Thushar Sathish Bhandary
           </h1>
           <h2 className="hero-role">
-            Web Development · Java Full Stack · Frontend Engineering
+            Java Full Stack · Spring Boot · React · Web Development
           </h2>
           <p className="hero-desc">
-            Computer Science Engineering student with strong fundamentals in web development and software engineering. Hands-on experience in JavaScript-based systems, frontend development, and data-driven applications, with a disciplined approach to debugging and reliability.
+            Computer Science student specializing in Java Full Stack Development with hands-on experience in Spring Boot, React, and MySQL. Proficient in building RESTful APIs, JWT authentication, and deploying scalable web applications.
           </p>
           <div className="hero-cta">
             <button className="btn-primary" onClick={() => scrollToSection('projects')}>
