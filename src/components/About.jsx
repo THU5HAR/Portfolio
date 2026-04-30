@@ -1,50 +1,44 @@
 import { useEffect, useRef } from 'react'
-import anime from 'animejs'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './About.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const About = () => {
   const sectionRef = useRef(null)
-  const titleRef = useRef(null)
-  const contentRef = useRef(null)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            anime({
-              targets: titleRef.current,
-              opacity: [0, 1],
-              translateY: [-30, 0],
-              duration: 800,
-              easing: 'easeOutExpo'
-            })
+    const ctx = gsap.context(() => {
+      gsap.fromTo('.about-text p', 
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out',
+          scrollTrigger: { trigger: '.about-text', start: 'top 80%' }
+        }
+      )
 
-            anime({
-              targets: contentRef.current,
-              opacity: [0, 1],
-              translateY: [30, 0],
-              duration: 1000,
-              delay: 200,
-              easing: 'easeOutExpo'
-            })
-          }
-        })
-      },
-      { threshold: 0.2 }
-    )
+      gsap.fromTo('.highlight-item',
+        { opacity: 0, x: -30 },
+        { opacity: 1, x: 0, duration: 0.6, stagger: 0.12, ease: 'power3.out',
+          scrollTrigger: { trigger: '.about-highlights', start: 'top 85%' }
+        }
+      )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
+      gsap.fromTo('.stat-card',
+        { opacity: 0, scale: 0.85 },
+        { opacity: 1, scale: 1, duration: 0.5, stagger: 0.1, ease: 'back.out(1.4)',
+          scrollTrigger: { trigger: '.about-stats', start: 'top 85%' }
+        }
+      )
+    }, sectionRef)
 
-    return () => observer.disconnect()
+    return () => ctx.revert()
   }, [])
 
   return (
     <section id="about" className="about" ref={sectionRef}>
-      <h2 className="section-title" ref={titleRef}>About Me</h2>
-      <div className="about-content" ref={contentRef}>
+      <h2 className="section-title">About Me</h2>
+      <div className="about-content">
         <div className="about-text">
           <p>
             Currently working as a <strong>Web Developer Intern</strong> at VisionAstraa EV Academy,
@@ -111,4 +105,3 @@ const About = () => {
 }
 
 export default About
-

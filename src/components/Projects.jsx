@@ -1,10 +1,12 @@
 import { useEffect, useRef } from 'react'
-import anime from 'animejs'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './Projects.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Projects = () => {
   const sectionRef = useRef(null)
-  const titleRef = useRef(null)
 
   const projects = [
     {
@@ -34,42 +36,23 @@ const Projects = () => {
   ]
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            anime({
-              targets: titleRef.current,
-              opacity: [0, 1],
-              translateY: [-30, 0],
-              duration: 800,
-              easing: 'easeOutExpo'
-            })
+    const ctx = gsap.context(() => {
+      gsap.fromTo('.project-card',
+        { opacity: 0, y: 50, rotateX: 5 },
+        {
+          opacity: 1, y: 0, rotateX: 0,
+          duration: 0.7, stagger: 0.12, ease: 'power3.out',
+          scrollTrigger: { trigger: '.projects-grid', start: 'top 82%' }
+        }
+      )
+    }, sectionRef)
 
-            anime({
-              targets: '.project-card',
-              opacity: [0, 1],
-              scale: [0.9, 1],
-              delay: anime.stagger(100),
-              duration: 600,
-              easing: 'easeOutExpo'
-            })
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
+    return () => ctx.revert()
   }, [])
 
   return (
     <section id="projects" className="projects" ref={sectionRef}>
-      <h2 className="section-title" ref={titleRef}>Featured Projects</h2>
+      <h2 className="section-title">Featured Projects</h2>
       <div className="projects-grid">
         {projects.map((project, index) => (
           <div key={index} className="project-card">
@@ -89,4 +72,3 @@ const Projects = () => {
 }
 
 export default Projects
-

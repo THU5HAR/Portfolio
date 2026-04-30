@@ -1,10 +1,12 @@
 import { useEffect, useRef } from 'react'
-import anime from 'animejs'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './Certifications.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Certifications = () => {
   const sectionRef = useRef(null)
-  const titleRef = useRef(null)
 
   const certifications = [
     {
@@ -40,42 +42,22 @@ const Certifications = () => {
   ]
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            anime({
-              targets: titleRef.current,
-              opacity: [0, 1],
-              translateY: [-30, 0],
-              duration: 800,
-              easing: 'easeOutExpo'
-            })
+    const ctx = gsap.context(() => {
+      gsap.fromTo('.cert-card',
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out',
+          scrollTrigger: { trigger: '.certifications-grid', start: 'top 82%' }
+        }
+      )
+    }, sectionRef)
 
-            anime({
-              targets: '.cert-card',
-              opacity: [0, 1],
-              translateY: [30, 0],
-              delay: anime.stagger(80),
-              duration: 600,
-              easing: 'easeOutExpo'
-            })
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
+    return () => ctx.revert()
   }, [])
 
   return (
     <section id="certifications" className="certifications" ref={sectionRef}>
-      <h2 className="section-title" ref={titleRef}>Certifications</h2>
+      <h2 className="section-title">Certifications</h2>
       <div className="certifications-grid">
         {certifications.map((cert, index) => (
           <div key={index} className="cert-card">
@@ -95,4 +77,3 @@ const Certifications = () => {
 }
 
 export default Certifications
-

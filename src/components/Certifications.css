@@ -5,37 +5,37 @@
 .certifications-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .cert-card {
   background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 1.5rem;
   display: flex;
-  gap: 1.5rem;
+  gap: 1.25rem;
   align-items: start;
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
+  backdrop-filter: blur(8px);
 }
 
 .cert-card:hover {
-  border-color: var(--primary-color);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(233, 84, 32, 0.2);
+  border-color: var(--sand-400);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
 }
 
 .cert-icon {
-  font-size: 2.5rem;
+  font-size: 2rem;
   flex-shrink: 0;
-  width: 60px;
-  height: 60px;
+  width: 52px;
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(233, 84, 32, 0.1);
+  background: var(--sand-200);
   border-radius: 12px;
-  border: 1px solid rgba(233, 84, 32, 0.3);
 }
 
 .cert-content {
@@ -43,10 +43,10 @@
 }
 
 .cert-title {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 0.75rem;
+  color: var(--text-heading);
+  margin-bottom: 0.6rem;
   line-height: 1.4;
 }
 
@@ -57,18 +57,18 @@
 }
 
 .cert-issuer {
-  color: var(--text-secondary);
+  color: var(--text-body);
   font-size: 0.9rem;
   font-weight: 500;
 }
 
 .cert-type {
   display: inline-block;
-  padding: 0.3rem 0.8rem;
-  background: rgba(233, 84, 32, 0.2);
-  border: 1px solid var(--primary-color);
+  padding: 0.25rem 0.7rem;
+  background: rgba(192, 104, 48, 0.1);
+  border: 1px solid rgba(192, 104, 48, 0.25);
   border-radius: 12px;
-  color: var(--primary-color);
+  color: var(--accent);
   font-size: 0.75rem;
   font-weight: 600;
   width: fit-content;
@@ -78,20 +78,16 @@
   .certifications-grid {
     grid-template-columns: 1fr;
   }
-
   .cert-card {
     padding: 1.25rem;
     gap: 1rem;
   }
-
   .cert-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 2rem;
+    width: 44px;
+    height: 44px;
+    font-size: 1.6rem;
   }
-
   .cert-title {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 }
-

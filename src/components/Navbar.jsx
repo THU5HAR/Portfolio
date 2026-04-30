@@ -1,81 +1,60 @@
-import { useEffect, useState } from 'react'
-import anime from 'animejs'
+import { useState, useEffect } from 'react'
+import gsap from 'gsap'
 import './Navbar.css'
 
 const Navbar = ({ activeSection }) => {
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 50)
     window.addEventListener('scroll', handleScroll)
+
+    // Entrance animation
+    gsap.fromTo('.navbar-wrap',
+      { y: -100, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 0.3 }
+    )
+
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  useEffect(() => {
-    if (isScrolled) {
-      anime({
-        targets: '.navbar',
-        backgroundColor: 'rgba(44, 0, 30, 0.95)',
-        backdropFilter: 'blur(10px)',
-        duration: 300,
-        easing: 'easeOutQuad'
-      })
-    }
-  }, [isScrolled])
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      setIsMobileMenuOpen(false)
     }
   }
 
   const navItems = [
-    { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
     { id: 'experience', label: 'Experience' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'certifications', label: 'Certifications' },
-    { id: 'education', label: 'Education' },
+    { id: 'projects', label: 'Work' },
     { id: 'contact', label: 'Contact' }
   ]
 
   return (
-    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="nav-container">
+    <nav className={`navbar-wrap ${isScrolled ? 'scrolled' : ''}`}>
+      <div className="nav-inner">
         <div className="nav-logo" onClick={() => scrollToSection('home')}>
-          <span className="logo-text">TSB</span>
+          TSB
         </div>
-        
-        <ul className={`nav-menu ${isMobileMenuOpen ? 'active' : ''}`}>
-          {navItems.map((item) => (
-            <li key={item.id}>
-              <a
-                href={`#${item.id}`}
-                className={activeSection === item.id ? 'active' : ''}
-                onClick={(e) => {
-                  e.preventDefault()
-                  scrollToSection(item.id)
-                }}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
 
-        <div 
-          className={`hamburger ${isMobileMenuOpen ? 'active' : ''}`}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
+        <div className="nav-pill">
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              className={`nav-pill-btn ${activeSection === item.id ? 'active' : ''}`}
+              onClick={() => scrollToSection(item.id)}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="nav-social">
+          <a href="https://www.linkedin.com/in/thushar-sathish-bhandary-238a08255" target="_blank" rel="noreferrer">Li</a>
+          <a href="https://github.com/THU5HAR" target="_blank" rel="noreferrer">Gh</a>
         </div>
       </div>
     </nav>
@@ -83,4 +62,3 @@ const Navbar = ({ activeSection }) => {
 }
 
 export default Navbar
-

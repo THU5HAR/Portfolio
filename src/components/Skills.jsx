@@ -1,10 +1,12 @@
 import { useEffect, useRef } from 'react'
-import anime from 'animejs'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './Skills.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Skills = () => {
   const sectionRef = useRef(null)
-  const titleRef = useRef(null)
 
   const skillCategories = [
     {
@@ -35,51 +37,30 @@ const Skills = () => {
   ]
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            anime({
-              targets: titleRef.current,
-              opacity: [0, 1],
-              translateY: [-30, 0],
-              duration: 800,
-              easing: 'easeOutExpo'
-            })
+    const ctx = gsap.context(() => {
+      gsap.fromTo('.skill-category',
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1, y: 0, duration: 0.7, stagger: 0.12, ease: 'power3.out',
+          scrollTrigger: { trigger: '.skills-container', start: 'top 80%' }
+        }
+      )
 
-            anime({
-              targets: '.skill-category',
-              opacity: [0, 1],
-              translateY: [50, 0],
-              delay: anime.stagger(100),
-              duration: 800,
-              easing: 'easeOutExpo'
-            })
+      gsap.fromTo('.skill-item',
+        { opacity: 0, scale: 0.8 },
+        {
+          opacity: 1, scale: 1, duration: 0.4, stagger: 0.04, ease: 'back.out(1.6)',
+          scrollTrigger: { trigger: '.skills-container', start: 'top 75%' }
+        }
+      )
+    }, sectionRef)
 
-            anime({
-              targets: '.skill-item',
-              scale: [0, 1],
-              opacity: [0, 1],
-              delay: anime.stagger(50, { start: 300 }),
-              duration: 500,
-              easing: 'easeOutBack'
-            })
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
+    return () => ctx.revert()
   }, [])
 
   return (
     <section id="skills" className="skills" ref={sectionRef}>
-      <h2 className="section-title" ref={titleRef}>Technical Skills</h2>
+      <h2 className="section-title">Technical Skills</h2>
       <div className="skills-container">
         {skillCategories.map((category, index) => (
           <div key={index} className="skill-category">
@@ -102,4 +83,3 @@ const Skills = () => {
 }
 
 export default Skills
-

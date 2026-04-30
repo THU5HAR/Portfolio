@@ -1,43 +1,38 @@
 import { useEffect, useRef } from 'react'
-import anime from 'animejs'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './Contact.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Contact = () => {
   const sectionRef = useRef(null)
-  const titleRef = useRef(null)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            anime({
-              targets: titleRef.current,
-              opacity: [0, 1],
-              translateY: [-30, 0],
-              duration: 800,
-              easing: 'easeOutExpo'
-            })
+    const ctx = gsap.context(() => {
+      gsap.fromTo('.contact-intro',
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+          scrollTrigger: { trigger: '.contact-content', start: 'top 85%' }
+        }
+      )
 
-            anime({
-              targets: '.contact-item',
-              opacity: [0, 1],
-              scale: [0.8, 1],
-              delay: anime.stagger(100),
-              duration: 600,
-              easing: 'easeOutBack'
-            })
-          }
-        })
-      },
-      { threshold: 0.2 }
-    )
+      gsap.fromTo('.contact-item',
+        { opacity: 0, x: -30 },
+        { opacity: 1, x: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out',
+          scrollTrigger: { trigger: '.contact-items', start: 'top 85%' }
+        }
+      )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
+      gsap.fromTo('.social-button',
+        { opacity: 0, scale: 0.85 },
+        { opacity: 1, scale: 1, duration: 0.5, stagger: 0.1, ease: 'back.out(1.4)',
+          scrollTrigger: { trigger: '.social-links', start: 'top 90%' }
+        }
+      )
+    }, sectionRef)
 
-    return () => observer.disconnect()
+    return () => ctx.revert()
   }, [])
 
   const contactInfo = [
@@ -96,7 +91,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="contact" ref={sectionRef}>
-      <h2 className="section-title" ref={titleRef}>Get In Touch</h2>
+      <h2 className="section-title">Get In Touch</h2>
       <div className="contact-content">
         <div className="contact-info">
           <p className="contact-intro">
@@ -141,4 +136,3 @@ const Contact = () => {
 }
 
 export default Contact
-

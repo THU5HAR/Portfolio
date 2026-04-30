@@ -1,10 +1,12 @@
 import { useEffect, useRef } from 'react'
-import anime from 'animejs'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './Education.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Education = () => {
   const sectionRef = useRef(null)
-  const titleRef = useRef(null)
 
   const education = [
     {
@@ -32,42 +34,22 @@ const Education = () => {
   ]
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            anime({
-              targets: titleRef.current,
-              opacity: [0, 1],
-              translateY: [-30, 0],
-              duration: 800,
-              easing: 'easeOutExpo'
-            })
+    const ctx = gsap.context(() => {
+      gsap.fromTo('.education-card',
+        { opacity: 0, x: 50 },
+        {
+          opacity: 1, x: 0, duration: 0.7, stagger: 0.15, ease: 'power3.out',
+          scrollTrigger: { trigger: '.education-timeline', start: 'top 82%' }
+        }
+      )
+    }, sectionRef)
 
-            anime({
-              targets: '.education-card',
-              opacity: [0, 1],
-              translateX: [50, 0],
-              delay: anime.stagger(150),
-              duration: 800,
-              easing: 'easeOutExpo'
-            })
-          }
-        })
-      },
-      { threshold: 0.2 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
+    return () => ctx.revert()
   }, [])
 
   return (
     <section id="education" className="education" ref={sectionRef}>
-      <h2 className="section-title" ref={titleRef}>Education</h2>
+      <h2 className="section-title">Education</h2>
       <div className="education-timeline">
         {education.map((edu, index) => (
           <div key={index} className="education-card">
@@ -97,4 +79,3 @@ const Education = () => {
 }
 
 export default Education
-
