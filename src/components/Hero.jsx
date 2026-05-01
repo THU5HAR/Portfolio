@@ -112,7 +112,7 @@ const Hero = () => {
       {/* Full-width background image */}
       <div className="hero-bg">
         <img
-          src={`${import.meta.env.BASE_URL}images/hero-image.png`}
+          src={`${import.meta.env.BASE_URL}images/hero-bg-v2.png`}
           alt="Thushar Sathish Bhandary in workspace"
           className="hero-bg-image"
         />
