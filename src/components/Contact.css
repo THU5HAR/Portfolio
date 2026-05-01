@@ -50,7 +50,7 @@
   background: var(--sand-200);
   border-radius: 12px;
   flex-shrink: 0;
-  color: var(--accent);
+  color: var(--text-heading);
 }
 
 .contact-icon svg {

@@ -12,9 +12,23 @@ const Hero = () => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ delay: 0.5 })
 
-      tl.fromTo('.hero-greeting',
+      // Fade in the background image
+      tl.fromTo('.hero-bg-image',
+        { opacity: 0, scale: 1.1 },
+        { opacity: 1, scale: 1, duration: 1.6, ease: 'power2.out' }
+      )
+
+      // Overlay slides in
+      .fromTo('.hero-overlay',
+        { opacity: 0 },
+        { opacity: 1, duration: 1, ease: 'power2.out' },
+        '-=1.2'
+      )
+
+      .fromTo('.hero-greeting',
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
+        '-=0.6'
       )
       .fromTo('.hero-name',
         { opacity: 0, y: 60, clipPath: 'inset(100% 0 0 0)' },
@@ -36,11 +50,6 @@ const Hero = () => {
         { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
         '-=0.3'
       )
-      .fromTo('.hero-image-wrap',
-        { opacity: 0, scale: 0.85, rotate: -3 },
-        { opacity: 1, scale: 1, rotate: 0, duration: 1.2, ease: 'power3.out' },
-        '-=1'
-      )
 
       // Floating 3D shapes entrance
       tl.fromTo('.shape-3d',
@@ -49,11 +58,10 @@ const Hero = () => {
         '-=1'
       )
 
-      // Shapes now interact with cursor via App.jsx repulsion system
-
-      // Parallax on hero image
-      gsap.to('.hero-portrait', {
-        y: -40,
+      // Parallax on hero background image
+      gsap.to('.hero-bg-image', {
+        y: -60,
+        scale: 1.08,
         ease: 'none',
         scrollTrigger: {
           trigger: heroRef.current,
@@ -101,6 +109,16 @@ const Hero = () => {
 
   return (
     <section id="home" className="hero" ref={heroRef}>
+      {/* Full-width background image */}
+      <div className="hero-bg">
+        <img
+          src={`${import.meta.env.BASE_URL}images/hero-image.png`}
+          alt="Thushar Sathish Bhandary in workspace"
+          className="hero-bg-image"
+        />
+        <div className="hero-overlay"></div>
+      </div>
+
       {/* Floating 3D shapes */}
       <div className="shape-3d shape-cube" aria-hidden="true"></div>
       <div className="shape-3d shape-sphere" aria-hidden="true"></div>
@@ -130,17 +148,10 @@ const Hero = () => {
             </button>
           </div>
         </div>
-
-        <div className="hero-image-wrap">
-          <img
-            src={`${import.meta.env.BASE_URL}images/hero-image.png`}
-            alt="Thushar Sathish Bhandary"
-            className="hero-portrait"
-          />
-          <div className="hero-orb hero-orb-1"></div>
-          <div className="hero-orb hero-orb-2"></div>
-        </div>
       </div>
+
+      {/* Bottom gradient fade for smooth transition */}
+      <div className="hero-bottom-fade"></div>
     </section>
   )
 }

@@ -14,7 +14,7 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, var(--accent), var(--sand-300));
+  background: linear-gradient(to bottom, var(--accent), var(--sand-400));
   transform-origin: top;
 }
 
@@ -33,7 +33,7 @@
   border-radius: 50%;
   background: var(--accent);
   border: 3px solid var(--bg-main);
-  box-shadow: 0 0 0 3px rgba(192, 104, 48, 0.2);
+  box-shadow: 0 0 0 3px rgba(184, 164, 140, 0.35);
 }
 
 .experience-content {
@@ -46,9 +46,9 @@
 }
 
 .experience-content:hover {
-  border-color: var(--sand-400);
+  border-color: rgba(184, 164, 140, 0.35);
   transform: translateX(8px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
 }
 
 .experience-header {
@@ -68,10 +68,10 @@
 
 .experience-badge {
   padding: 0.35rem 0.9rem;
-  background: rgba(192, 104, 48, 0.1);
-  border: 1px solid var(--accent-light);
+  background: rgba(184, 164, 140, 0.18);
+  border: 1px solid rgba(184, 164, 140, 0.35);
   border-radius: 20px;
-  color: var(--accent);
+  color: var(--accent-light);
   font-size: 0.8rem;
   font-weight: 600;
 }

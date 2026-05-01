@@ -43,17 +43,12 @@ function App() {
   useEffect(() => {
     const titles = document.querySelectorAll('.section-title');
     titles.forEach(title => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: title,
-          start: 'top 85%',
-          end: 'top 25%',
-          toggleActions: 'play reverse play reverse',
-        }
-      });
-      tl.fromTo(title,
+      gsap.fromTo(title,
         { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }
+        {
+          opacity: 1, y: 0, duration: 1, ease: 'none',
+          scrollTrigger: { trigger: title, start: 'top 85%', end: 'top 25%', scrub: 1, invalidateOnRefresh: true }
+        }
       );
     });
 

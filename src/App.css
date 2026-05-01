@@ -14,6 +14,12 @@ section {
   position: relative;
 }
 
+/* Hero is full-bleed — no max-width or side padding */
+section.hero {
+  max-width: 100%;
+  padding: 0;
+}
+
 /* Shared section title */
 .section-title {
   font-size: clamp(2.2rem, 4vw, 3rem);

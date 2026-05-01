@@ -5,15 +5,19 @@
   width: 100%;
   z-index: 1000;
   padding: 20px 40px;
+  background: transparent;
   transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
 }
 
 .navbar-wrap.scrolled {
-  background: rgba(253, 248, 240, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
-  padding: 14px 40px;
+  background: transparent;
+  box-shadow: none;
+  padding: 12px 40px;
+  pointer-events: none;
+}
+
+.nav-inner > * {
+  pointer-events: auto;
 }
 
 .nav-inner {
@@ -24,28 +28,41 @@
   align-items: center;
 }
 
+/* ---- Logo ---- */
 .nav-logo {
   font-size: 1.4rem;
   font-weight: 700;
-  color: var(--text-heading);
+  color: #ffffff;
   cursor: pointer;
   letter-spacing: -0.03em;
-  transition: opacity 0.3s;
+  transition: color 0.4s ease, opacity 0.3s;
+}
+
+.navbar-wrap.scrolled .nav-logo {
+  color: var(--text-heading);
 }
 
 .nav-logo:hover {
   opacity: 0.7;
 }
 
+/* ---- Nav pill ---- */
 .nav-pill {
   display: flex;
   align-items: center;
   gap: 4px;
-  background: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.1);
   backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 40px;
   padding: 4px;
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+.navbar-wrap.scrolled .nav-pill {
+  background: rgba(255,255,255,0.6);
+  border-color: var(--border);
 }
 
 .nav-pill-btn {
@@ -55,21 +72,35 @@
   font-size: 0.95rem;
   font-weight: 500;
   font-family: inherit;
-  color: var(--text-muted);
+  color: rgba(255,255,255,0.7);
   cursor: pointer;
   border-radius: 30px;
   transition: all 0.3s ease;
 }
 
+.navbar-wrap.scrolled .nav-pill-btn {
+  color: var(--text-muted);
+}
+
 .nav-pill-btn:hover {
+  color: #ffffff;
+}
+
+.navbar-wrap.scrolled .nav-pill-btn:hover {
   color: var(--text-heading);
 }
 
 .nav-pill-btn.active {
+  background: rgba(255,255,255,0.2);
+  color: #ffffff;
+}
+
+.navbar-wrap.scrolled .nav-pill-btn.active {
   background: var(--text-heading);
   color: var(--sand-50);
 }
 
+/* ---- Social icons ---- */
 .nav-social {
   display: flex;
   gap: 10px;
@@ -82,12 +113,18 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: rgba(255,255,255,0.5);
-  border: 1px solid var(--border);
-  color: var(--text-body);
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.8);
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   backdrop-filter: blur(6px);
+}
+
+.navbar-wrap.scrolled .nav-social-icon {
+  background: rgba(255,255,255,0.5);
+  border-color: var(--border);
+  color: var(--text-body);
 }
 
 .nav-social-icon svg {

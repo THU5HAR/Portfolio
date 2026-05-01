@@ -10,47 +10,30 @@ const About = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Text paragraphs
-      const tlText = gsap.timeline({
+      const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: '.about-text',
-          start: 'top 82%',
-          end: 'top 20%',
-          toggleActions: 'play reverse play reverse',
+          trigger: '.about-content',
+          start: 'top 85%',
+          end: 'top 25%',
+          scrub: 1,
+          invalidateOnRefresh: true
         }
-      })
-      tlText.fromTo('.about-text > p',
+      });
+
+      tl.fromTo('.about-text p', 
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.7, stagger: 0.12, ease: 'power3.out' }
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'none' }
       )
-
-      // Highlight cards
-      const tlHighlight = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.about-highlights',
-          start: 'top 85%',
-          end: 'top 25%',
-          toggleActions: 'play reverse play reverse',
-        }
-      })
-      tlHighlight.fromTo('.highlight-item',
+      .fromTo('.highlight-item',
         { opacity: 0, x: -30 },
-        { opacity: 1, x: 0, duration: 0.5, stagger: 0.1, ease: 'power3.out' }
+        { opacity: 1, x: 0, duration: 0.6, stagger: 0.12, ease: 'none' },
+        '<'
       )
-
-      // Stat cards
-      const tlStats = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.about-stats',
-          start: 'top 85%',
-          end: 'top 25%',
-          toggleActions: 'play reverse play reverse',
-        }
-      })
-      tlStats.fromTo('.stat-card',
+      .fromTo('.stat-card',
         { opacity: 0, scale: 0.85 },
-        { opacity: 1, scale: 1, duration: 0.4, stagger: 0.08, ease: 'back.out(1.4)' }
-      )
+        { opacity: 1, scale: 1, duration: 0.5, stagger: 0.1, ease: 'none' },
+        '<'
+      );
     }, sectionRef)
 
     return () => ctx.revert()

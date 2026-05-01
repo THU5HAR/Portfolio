@@ -46,8 +46,8 @@
 .project-category {
   display: inline-block;
   padding: 0.35rem 0.9rem;
-  background: rgba(192, 104, 48, 0.1);
-  border: 1px solid rgba(192, 104, 48, 0.25);
+  background: rgba(184, 164, 140, 0.15);
+  border: 1px solid rgba(184, 164, 140, 0.3);
   border-radius: 20px;
   color: var(--accent);
   font-size: 0.78rem;

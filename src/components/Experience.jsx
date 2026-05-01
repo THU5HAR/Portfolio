@@ -58,20 +58,27 @@ const Experience = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: '.exp-timeline',
-          start: 'top 82%',
-          end: 'top 15%',
-          toggleActions: 'play reverse play reverse',
+          start: 'top 80%',
+          end: 'top 20%',
+          scrub: 1,
+          invalidateOnRefresh: true
         }
-      })
-      tl.fromTo('.timeline-dot',
-        { scale: 0 },
-        { scale: 1, duration: 0.3, stagger: 0.15, ease: 'back.out(2)' }
-      )
-      .fromTo('.experience-card',
+      });
+
+      tl.fromTo('.experience-card',
         { opacity: 0, x: -60 },
-        { opacity: 1, x: 0, duration: 0.7, stagger: 0.15, ease: 'power3.out' },
-        '-=0.4'
+        { opacity: 1, x: 0, duration: 0.8, stagger: 0.2, ease: 'none' }
       )
+      .fromTo('.timeline-dot',
+        { scale: 0 },
+        { scale: 1, duration: 0.4, stagger: 0.2, ease: 'none' },
+        '<'
+      )
+      .fromTo('.experience-description li',
+        { opacity: 0, x: -20 },
+        { opacity: 1, x: 0, duration: 0.4, stagger: 0.05, ease: 'none' },
+        '<'
+      );
     }, sectionRef)
 
     return () => ctx.revert()

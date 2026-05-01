@@ -14,24 +14,26 @@ const Contact = () => {
         scrollTrigger: {
           trigger: '.contact-content',
           start: 'top 85%',
-          end: 'top 25%',
-          toggleActions: 'play reverse play reverse',
+          end: 'bottom 95%',
+          scrub: 1,
+          invalidateOnRefresh: true
         }
-      })
+      });
+
       tl.fromTo('.contact-intro',
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }
+        { opacity: 1, y: 0, duration: 0.8, ease: 'none' }
       )
       .fromTo('.contact-item',
         { opacity: 0, x: -30 },
-        { opacity: 1, x: 0, duration: 0.5, stagger: 0.08, ease: 'power3.out' },
-        '-=0.3'
+        { opacity: 1, x: 0, duration: 0.6, stagger: 0.1, ease: 'none' },
+        '<'
       )
       .fromTo('.social-button',
         { opacity: 0, scale: 0.85 },
-        { opacity: 1, scale: 1, duration: 0.4, stagger: 0.08, ease: 'back.out(1.4)' },
-        '-=0.2'
-      )
+        { opacity: 1, scale: 1, duration: 0.5, stagger: 0.1, ease: 'none' },
+        '<'
+      );
     }, sectionRef)
 
     return () => ctx.revert()

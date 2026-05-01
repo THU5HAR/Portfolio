@@ -47,19 +47,21 @@ const Projects = () => {
         scrollTrigger: {
           trigger: '.projects-grid',
           start: 'top 82%',
-          end: 'top 15%',
-          toggleActions: 'play reverse play reverse',
+          end: 'top 20%',
+          scrub: 1,
+          invalidateOnRefresh: true
         }
-      })
+      });
+
       tl.fromTo('.project-card',
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out' }
+        { opacity: 0, y: 50, rotateX: 5 },
+        { opacity: 1, y: 0, rotateX: 0, duration: 0.7, stagger: 0.12, ease: 'none' }
       )
       .fromTo('.tool-tag',
         { opacity: 0, scale: 0.7 },
-        { opacity: 1, scale: 1, duration: 0.25, stagger: 0.02, ease: 'back.out(1.5)' },
-        '-=0.3'
-      )
+        { opacity: 1, scale: 1, duration: 0.3, stagger: 0.03, ease: 'none' },
+        '<'
+      );
     }, sectionRef)
 
     return () => ctx.revert()
